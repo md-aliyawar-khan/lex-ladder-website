@@ -98,6 +98,12 @@ function refreshSiteAnnouncement() {
 
 // ================= DISCLAIMER GATE (before site use) =================
 (function () {
+  const STORAGE_KEY = "lexLadderDisclaimerAcceptedForSession";
+
+  if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+    return;
+  }
+
   document.body.classList.add("human-gate-active");
 
   const gate = document.createElement("div");
@@ -133,6 +139,7 @@ function refreshSiteAnnouncement() {
   submitBtn.focus();
 
   submitBtn.addEventListener("click", function () {
+    sessionStorage.setItem(STORAGE_KEY, "1");
     gate.remove();
     document.body.classList.remove("human-gate-active");
   });
