@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog | Lex Ladder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read Lex Ladder legal updates and articles, and submit guest articles for editorial review.">
+  <link rel="icon" href="images/lexladder-logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/lexladder-logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="header">
+  <div class="logo">
+    <a href="index.html" class="logo-link">
+      <img src="images/lexladder-logo.png" width="44" height="44" alt="Lex Ladder logo" class="logo-img" decoding="async">
+      <span class="logo-text">Lex Ladder</span>
+    </a>
+  </div>
+  <nav aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="process.html">Process</a>
+    <a href="blog.html" aria-current="page">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a href="#" data-whatsapp-link class="btn btn--wa" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="contact.html" class="btn header-actions__btn">Contact</a>
+  </div>
+</header>
+
+<main id="main-content">
+
+<section class="page">
+  <h1>Blog</h1>
+  <p>
+    Articles and updates from Lex Ladder. Guest submissions are welcome: they are reviewed by our team
+    before they can appear here.
+  </p>
+</section>
+
+<section class="page blog-list-wrap">
+  <h2>Articles</h2>
+  <div id="blog-posts" class="blog-posts" aria-live="polite"></div>
+  <p id="blog-empty" class="blog-empty" hidden>No published articles yet. Check back soon.</p>
+  <p id="blog-load-err" class="form-status form-status--err" hidden></p>
+</section>
+
+<section class="page">
+  <h2>Submit a guest article</h2>
+  <p>
+    Share an idea or short piece for possible publication. We review every submission for quality and
+    relevance; not all pieces are published.
+  </p>
+  <form id="blog-guest-form" class="blog-form" enctype="multipart/form-data">
+    <label for="blog-guest-title">Title</label>
+    <input id="blog-guest-title" name="title" type="text" required maxlength="200" placeholder="Article title">
+
+    <label for="blog-guest-author">Your name</label>
+    <input id="blog-guest-author" name="author" type="text" required maxlength="120" placeholder="Full name">
+
+    <label for="blog-guest-email">Email (required, for our team to reply)</label>
+    <input id="blog-guest-email" name="email" type="email" required aria-required="true" maxlength="254" placeholder="you@example.com" autocomplete="email">
+
+    <label for="blog-guest-content">Article</label>
+    <textarea id="blog-guest-content" name="content" required aria-required="true" minlength="40" maxlength="50000" placeholder="Your article text (at least a few sentences)"></textarea>
+
+    <label for="blog-guest-image">Blog image (optional)</label>
+    <input id="blog-guest-image" name="image" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+    <p class="blog-form-hint">Attach a PNG, JPG, WEBP, or GIF image up to 2 MB.</p>
+
+    <button type="submit">Submit for review</button>
+  </form>
+  <p id="blog-guest-status" class="form-status" role="status" aria-live="polite"></p>
+</section>
+
+<section class="page blog-team-wrap">
+  <details class="blog-team-details">
+    <summary class="blog-team-summary">Lawyer publishing &amp; moderation</summary>
+    <p class="blog-team-lead">
+      For Lex Ladder team only. Use the publication key from the server configuration (<code>BLOG_POST_TOKEN</code>).
+      Anyone with the key can publish or moderate; keep it private.
+    </p>
+
+    <label for="blog-team-token">Publication key</label>
+    <input id="blog-team-token" type="password" autocomplete="current-password" class="blog-team-token-input" placeholder="Enter key before publishing or moderating">
+
+    <h3>Publish immediately</h3>
+    <p class="blog-team-hint">Posts go live as soon as you submit (no review step).</p>
+    <form id="blog-publish-form" class="blog-form">
+      <label for="blog-pub-title">Title</label>
+      <input id="blog-pub-title" name="title" type="text" required maxlength="200">
+
+      <label for="blog-pub-author">Author</label>
+      <input id="blog-pub-author" name="author" type="text" required maxlength="120" placeholder="Lawyer or firm attribution">
+
+      <label for="blog-pub-content">Article</label>
+      <textarea id="blog-pub-content" name="content" required aria-required="true" minlength="20" maxlength="50000"></textarea>
+
+      <button type="submit">Publish</button>
+    </form>
+    <p id="blog-publish-status" class="form-status" role="status" aria-live="polite"></p>
+
+    <h3>Pending guest submissions</h3>
+    <p class="blog-team-hint">Load the list, then approve to publish or reject to discard.</p>
+    <button type="button" class="btn blog-refresh-pending" id="blog-load-pending">Refresh pending list</button>
+    <div id="blog-pending-list" class="blog-pending-list"></div>
+    <p id="blog-pending-status" class="form-status" role="status" aria-live="polite"></p>
+  </details>
+</section>
+
+<footer>
+  <p>&copy; 2026 Lex Ladder - Lawyers & Advocates</p>
+</footer>
+
+</main>
+
+<script src="site-config.js" defer></script>
+<script src="script.js" defer></script>
+<script src="blog.js" defer></script>
+</body>
+</html>
