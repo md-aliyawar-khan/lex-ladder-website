@@ -12,5 +12,6 @@ window.SITE_CONFIG = {
    * Leave empty when the site and API are served from the same domain (recommended).
    * If the frontend is hosted separately, set this to your API base URL, e.g. "https://api.yourdomain.com"
    */
-  apiBase: ""
+  apiBase: "https://lex-ladder-website.onrender.com"
+
 };
