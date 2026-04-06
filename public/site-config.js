@@ -4,7 +4,7 @@
  * Example India: 919876543210
  */
 window.SITE_CONFIG = {
-  whatsappPhone: "918532803907",
+  whatsappPhone: "918240967772",
   whatsappDefaultMessage:
     "Hello Lex Ladder, I would like to inquire about legal services.",
 

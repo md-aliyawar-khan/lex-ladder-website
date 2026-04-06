@@ -1,9 +1,13 @@
 // ================= SITE CONFIG HELPERS =================
-function whatsappHref() {
+function whatsappHref(messageOverride) {
   const c = window.SITE_CONFIG || {};
   const phone = String(c.whatsappPhone || "").replace(/\D/g, "");
   if (!phone) return "#";
-  const text = encodeURIComponent(c.whatsappDefaultMessage || "");
+  const message =
+    typeof messageOverride === "string" && messageOverride.trim()
+      ? messageOverride.trim()
+      : c.whatsappDefaultMessage || "";
+  const text = encodeURIComponent(message);
   return "https://wa.me/" + phone + (text ? "?text=" + text : "");
 }
 
@@ -13,15 +17,30 @@ function apiUrl(path) {
 }
 
 function initWhatsAppLinks() {
-  const href = whatsappHref();
   document.querySelectorAll("[data-whatsapp-link]").forEach(function (a) {
-    a.href = href;
-    if (href === "#") {
-      a.addEventListener("click", function (e) {
+    const sourceSelector = a.getAttribute("data-whatsapp-message-source");
+    const sourceEl = sourceSelector ? document.querySelector(sourceSelector) : null;
+
+    function updateHref() {
+      const customMessage =
+        sourceEl && "value" in sourceEl ? String(sourceEl.value || "").trim() : "";
+      a.href = whatsappHref(customMessage);
+    }
+
+    updateHref();
+
+    if (sourceEl) {
+      sourceEl.addEventListener("input", updateHref);
+      sourceEl.addEventListener("change", updateHref);
+    }
+
+    a.addEventListener("click", function (e) {
+      updateHref();
+      if (a.href === "#") {
         e.preventDefault();
         alert("WhatsApp number is not configured yet. Edit public/site-config.js.");
-      });
-    }
+      }
+    });
   });
 
   const phone = String((window.SITE_CONFIG || {}).whatsappPhone || "").replace(/\D/g, "");
